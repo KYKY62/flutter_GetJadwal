@@ -4,15 +4,48 @@ import 'package:get/get.dart';
 class DetailScheduleController extends GetxController {
   RxList listDetailSchedule = [].obs;
 
-  getData() async {
-    await DetailScheduleService().getDetailSchedule().then((value) {
+  getDataMonday() async {
+    await DetailScheduleService().getDetailSchedule("monday").then((value) {
       listDetailSchedule.value = value;
+      print(listDetailSchedule);
+    });
+  }
+
+  getDataTuesday() async {
+    await DetailScheduleService().getDetailSchedule("tuesday").then((value) {
+      listDetailSchedule.value = value;
+      print(listDetailSchedule);
+    });
+  }
+
+  getDataWednesday() async {
+    await DetailScheduleService().getDetailSchedule("wednesday").then((value) {
+      listDetailSchedule.value = value;
+      print(listDetailSchedule);
+    });
+  }
+
+  getDataThursday() async {
+    await DetailScheduleService().getDetailSchedule("thursday").then((value) {
+      listDetailSchedule.value = value;
+      print(listDetailSchedule);
+    });
+  }
+
+  getDataFriday() async {
+    await DetailScheduleService().getDetailSchedule("friday").then((value) {
+      listDetailSchedule.value = value;
+      print(listDetailSchedule);
     });
   }
 
   @override
   void onInit() {
-    getData();
+    getDataMonday();
+    getDataTuesday();
+    getDataWednesday();
+    getDataThursday();
+    getDataFriday();
     super.onInit();
   }
 }

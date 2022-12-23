@@ -4,11 +4,16 @@ import 'package:get/get.dart';
 
 class DetailJadwal extends StatelessWidget {
   DetailJadwal({
-    this.dayJadwal,
+    required this.getData,
+    required this.itemCount,
+    required this.day,
     super.key,
   });
 
-  final String? dayJadwal;
+  final dynamic getData;
+  final int itemCount;
+  final String day;
+
   final cDetailSchedule = Get.put(DetailScheduleController());
 
   @override
@@ -33,7 +38,7 @@ class DetailJadwal extends StatelessWidget {
               width: 19.0,
             ),
             Text(
-              dayJadwal!,
+              day,
               style: const TextStyle(
                 color: Colors.black,
               ),
@@ -85,52 +90,50 @@ class DetailJadwal extends StatelessWidget {
           ),
         ],
       ),
-      body: Obx(
-        () => ListView.builder(
-          itemCount: details.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Container(
-                width: Get.width,
-                height: 80,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12),
-                  boxShadow: const [
-                    BoxShadow(
-                      blurRadius: 15,
-                      offset: Offset(6, 10),
-                      color: Colors.black12,
-                    )
+      body: ListView.builder(
+        itemCount: itemCount,
+        itemBuilder: (BuildContext context, int index) {
+          return Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Container(
+              width: Get.width,
+              height: 80,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: const [
+                  BoxShadow(
+                    blurRadius: 15,
+                    offset: Offset(6, 10),
+                    color: Colors.black12,
+                  )
+                ],
+              ),
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 32, vertical: 25),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Text(details[index]['title']),
+                    ),
+                    const Icon(
+                      Icons.edit,
+                      size: 24.0,
+                    ),
+                    const SizedBox(
+                      width: 26.0,
+                    ),
+                    const Icon(
+                      Icons.delete_outline,
+                      size: 24.0,
+                    ),
                   ],
                 ),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 32, vertical: 25),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Text(details[index]['title']),
-                      ),
-                      const Icon(
-                        Icons.edit,
-                        size: 24.0,
-                      ),
-                      const SizedBox(
-                        width: 26.0,
-                      ),
-                      const Icon(
-                        Icons.delete_outline,
-                        size: 24.0,
-                      ),
-                    ],
-                  ),
-                ),
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }

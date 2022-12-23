@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getjadwal/controller/detail_schedule_controller.dart';
 import 'package:flutter_getjadwal/controller/login_controller.dart';
 import 'package:flutter_getjadwal/models/schedule.dart';
 import 'package:flutter_getjadwal/service/schedule_service.dart';
@@ -19,6 +20,7 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   final loginC = Get.put(LoginController());
+  final cDetailSchedule = Get.put(DetailScheduleController());
 
   RefreshController refreshController = RefreshController();
   void _onRefresh() async {
@@ -51,6 +53,7 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
+    final details = cDetailSchedule;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xff3A0B48),
@@ -166,7 +169,13 @@ class _HomeViewState extends State<HomeView> {
                     color: schedule.data?.monday == null
                         ? const Color(0xffBBBBBB)
                         : const Color(0xffD9019C),
-                    onTap: () => Get.to(() => DetailJadwal(dayJadwal: "Senin")),
+                    onTap: () => Get.to(() => Obx(
+                          () => DetailJadwal(
+                            getData: details.getDataMonday(),
+                            itemCount: details.listDetailSchedule.length,
+                            day: "Senin",
+                          ),
+                        )),
                   ),
                   GridViewJadwal(
                     hariJadwal: "Selasa",
@@ -176,8 +185,13 @@ class _HomeViewState extends State<HomeView> {
                     color: schedule.data?.tuesday == null
                         ? const Color(0xffBBBBBB)
                         : const Color(0xffD9019C),
-                    onTap: () =>
-                        Get.to(() => DetailJadwal(dayJadwal: "Selasa")),
+                    onTap: () => Get.to(() => Obx(
+                          () => DetailJadwal(
+                            getData: details.getDataTuesday(),
+                            itemCount: details.listDetailSchedule.length,
+                            day: "Selasa",
+                          ),
+                        )),
                   ),
                   GridViewJadwal(
                     hariJadwal: "Rabu",
@@ -187,7 +201,13 @@ class _HomeViewState extends State<HomeView> {
                     color: schedule.data?.wednesday == null
                         ? const Color(0xffBBBBBB)
                         : const Color(0xffD9019C),
-                    onTap: () => Get.to(() => DetailJadwal(dayJadwal: "Rabu")),
+                    onTap: () => Get.to(() => Obx(
+                          () => DetailJadwal(
+                            getData: details.getDataWednesday(),
+                            itemCount: details.listDetailSchedule.length,
+                            day: "Rabu",
+                          ),
+                        )),
                   ),
                   GridViewJadwal(
                     hariJadwal: "Kamis",
@@ -197,7 +217,13 @@ class _HomeViewState extends State<HomeView> {
                     color: schedule.data?.thursday == null
                         ? const Color(0xffBBBBBB)
                         : const Color(0xffD9019C),
-                    onTap: () => Get.to(() => DetailJadwal(dayJadwal: "Kamis")),
+                    onTap: () => Get.to(() => Obx(
+                          () => DetailJadwal(
+                            getData: details.getDataThursday(),
+                            itemCount: details.listDetailSchedule.length,
+                            day: "Kamis",
+                          ),
+                        )),
                   ),
                   GridViewJadwal(
                     hariJadwal: "Jumat",
@@ -207,7 +233,15 @@ class _HomeViewState extends State<HomeView> {
                     color: schedule.data?.friday == null
                         ? const Color(0xffBBBBBB)
                         : const Color(0xffD9019C),
-                    onTap: () => Get.to(() => DetailJadwal(dayJadwal: "Jumat")),
+                    onTap: () => Get.to(
+                      () => Obx(
+                        () => DetailJadwal(
+                          getData: details.getDataFriday(),
+                          itemCount: details.listDetailSchedule.length,
+                          day: "Jumat",
+                        ),
+                      ),
+                    ),
                     // ! Nanti lempar paramater http sesuai hari jadi nanti hasil pasti sesuai dengan harinya
                   ),
                 ],

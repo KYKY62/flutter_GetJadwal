@@ -7,11 +7,11 @@ import 'package:http/http.dart' as http;
 
 class DetailScheduleService {
   final loginC = Get.put(LoginController());
-  Future<List> getDetailSchedule() async {
+  Future<List> getDetailSchedule(String day) async {
     List detailSchedule = [];
 
     var response = await http.get(
-      Uri.parse("${Api.schedule}${loginC.getData.email}&day=friday"),
+      Uri.parse("${Api.schedule}${loginC.getData.email}&day=$day"),
       headers: {
         "Content-Type": "application/json",
       },
