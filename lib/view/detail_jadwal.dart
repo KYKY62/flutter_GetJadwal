@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getjadwal/controller/delete_controller.dart';
 import 'package:flutter_getjadwal/controller/detail_schedule_controller.dart';
 import 'package:get/get.dart';
 
@@ -118,18 +119,28 @@ class DetailJadwal extends StatelessWidget {
                           Expanded(
                             child: Text(details[index]['title']),
                           ),
-                          Image.asset(
-                            "assets/edit-icon.png",
-                            width: 15.0,
-                            fit: BoxFit.cover,
+                          GestureDetector(
+                            onTap: () {},
+                            child: Image.asset(
+                              "assets/edit-icon.png",
+                              width: 15.0,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                           const SizedBox(
                             width: 26.0,
                           ),
-                          Image.asset(
-                            "assets/delete-icon.png",
-                            width: 15.0,
-                            fit: BoxFit.cover,
+                          GestureDetector(
+                            onTap: () {
+                              DeleteController().deleteSchedule(
+                                details[index]['id'].toString(),
+                              );
+                            },
+                            child: Image.asset(
+                              "assets/delete-icon.png",
+                              width: 15.0,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ],
                       ),
