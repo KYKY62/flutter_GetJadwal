@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getjadwal/controller/delete_controller.dart';
 import 'package:flutter_getjadwal/controller/detail_schedule_controller.dart';
+import 'package:flutter_getjadwal/utils/delete_dialog.dart';
 import 'package:get/get.dart';
 
 class DetailJadwal extends StatelessWidget {
@@ -132,8 +133,14 @@ class DetailJadwal extends StatelessWidget {
                           ),
                           GestureDetector(
                             onTap: () {
-                              DeleteController().deleteSchedule(
-                                details[index]['id'].toString(),
+                              DeleteDialog.deleteDialog(
+                                context: context,
+                                onTapDelete: () {
+                                  DeleteController().deleteSchedule(
+                                    details[index]['id'].toString(),
+                                  );
+                                  Get.back();
+                                },
                               );
                             },
                             child: Image.asset(
