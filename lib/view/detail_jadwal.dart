@@ -52,7 +52,7 @@ class DetailJadwal extends StatelessWidget {
               horizontal: 10,
             ),
             child: Material(
-              color: Colors.blue,
+              color: const Color(0xffD9019C),
               borderRadius: BorderRadius.circular(45),
               child: InkWell(
                 borderRadius: BorderRadius.circular(45),
@@ -90,51 +90,59 @@ class DetailJadwal extends StatelessWidget {
           ),
         ],
       ),
-      body: ListView.builder(
-        itemCount: itemCount,
-        itemBuilder: (BuildContext context, int index) {
-          return Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Container(
-              width: Get.width,
-              height: 80,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: const [
-                  BoxShadow(
-                    blurRadius: 15,
-                    offset: Offset(6, 10),
-                    color: Colors.black12,
-                  )
-                ],
-              ),
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 32, vertical: 25),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Text(details[index]['title']),
+      body: details.isNotEmpty
+          ? ListView.builder(
+              itemCount: itemCount,
+              itemBuilder: (BuildContext context, int index) {
+                return Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Container(
+                    width: Get.width,
+                    height: 80,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: const [
+                        BoxShadow(
+                          blurRadius: 15,
+                          offset: Offset(6, 10),
+                          color: Colors.black12,
+                        )
+                      ],
                     ),
-                    const Icon(
-                      Icons.edit,
-                      size: 24.0,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 32, vertical: 25),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Text(details[index]['title']),
+                          ),
+                          const Icon(
+                            Icons.edit,
+                            size: 24.0,
+                          ),
+                          const SizedBox(
+                            width: 26.0,
+                          ),
+                          const Icon(
+                            Icons.delete_outline,
+                            size: 24.0,
+                          ),
+                        ],
+                      ),
                     ),
-                    const SizedBox(
-                      width: 26.0,
-                    ),
-                    const Icon(
-                      Icons.delete_outline,
-                      size: 24.0,
-                    ),
-                  ],
-                ),
+                  ),
+                );
+              },
+            )
+          : Center(
+              child: Image.asset(
+                "assets/todo-empty.png",
+                width: Get.width / 2,
+                fit: BoxFit.cover,
               ),
             ),
-          );
-        },
-      ),
     );
   }
 }
