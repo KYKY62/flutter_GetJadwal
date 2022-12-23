@@ -118,16 +118,18 @@ class DetailJadwal extends StatelessWidget {
                           Expanded(
                             child: Text(details[index]['title']),
                           ),
-                          const Icon(
-                            Icons.edit,
-                            size: 24.0,
+                          Image.asset(
+                            "assets/edit-icon.png",
+                            width: 15.0,
+                            fit: BoxFit.cover,
                           ),
                           const SizedBox(
                             width: 26.0,
                           ),
-                          const Icon(
-                            Icons.delete_outline,
-                            size: 24.0,
+                          Image.asset(
+                            "assets/delete-icon.png",
+                            width: 15.0,
+                            fit: BoxFit.cover,
                           ),
                         ],
                       ),
