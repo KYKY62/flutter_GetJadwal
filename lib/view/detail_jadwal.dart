@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_getjadwal/controller/delete_controller.dart';
 import 'package:flutter_getjadwal/controller/detail_schedule_controller.dart';
 import 'package:flutter_getjadwal/utils/delete_dialog.dart';
+import 'package:flutter_getjadwal/utils/snackbar.dart';
 import 'package:get/get.dart';
 
 class DetailJadwal extends StatelessWidget {
@@ -139,6 +140,8 @@ class DetailJadwal extends StatelessWidget {
                                   DeleteController().deleteSchedule(
                                     details[index]['id'].toString(),
                                   );
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(MySnackbar.succesSnackbar);
                                   Get.back();
                                 },
                               );
