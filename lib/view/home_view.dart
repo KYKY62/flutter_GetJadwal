@@ -163,10 +163,12 @@ class _HomeViewState extends State<HomeView> {
                 children: [
                   GridViewJadwal(
                     hariJadwal: "Senin",
-                    totalJadwal: schedule.data?.monday == 0
+                    totalJadwal: schedule.data?.monday == 0 ||
+                            schedule.data?.monday == null
                         ? "Belum ada mata kuliah"
                         : "${schedule.data?.monday} Mata Kuliah",
-                    color: schedule.data?.monday == 0
+                    color: schedule.data?.monday == 0 ||
+                            schedule.data?.monday == null
                         ? const Color(0xffBBBBBB)
                         : const Color(0xffD9019C),
                     onTap: () => Get.to(() => Obx(
@@ -179,10 +181,12 @@ class _HomeViewState extends State<HomeView> {
                   ),
                   GridViewJadwal(
                     hariJadwal: "Selasa",
-                    totalJadwal: schedule.data?.tuesday == 0
+                    totalJadwal: schedule.data?.tuesday == 0 ||
+                            schedule.data?.tuesday == null
                         ? "Belum ada mata kuliah"
                         : "${schedule.data?.tuesday} Mata Kuliah",
-                    color: schedule.data?.tuesday == 0
+                    color: schedule.data?.tuesday == 0 ||
+                            schedule.data?.tuesday == null
                         ? const Color(0xffBBBBBB)
                         : const Color(0xffD9019C),
                     onTap: () => Get.to(() => Obx(
