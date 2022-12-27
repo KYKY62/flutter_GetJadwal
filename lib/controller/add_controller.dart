@@ -4,7 +4,10 @@ import 'package:get/state_manager.dart';
 
 class AddController extends GetxController {
   TextEditingController course = TextEditingController();
-  var selectedValue = "friday".obs;
+  var selectedValue = "".obs;
+
+  // Logic jika Kosong
+  var isEmpty = false.obs;
 
   postAddSchedule(String courses, String day) async {
     try {

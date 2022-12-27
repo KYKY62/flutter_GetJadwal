@@ -64,7 +64,7 @@ class LoginView extends StatelessWidget {
                     borderRadius: BorderRadius.circular(6),
                     border: loginC.isErrorEmail.value == true
                         ? Border.all(
-                            color: Colors.red,
+                            color: const Color(0xffD9019C),
                           )
                         : Border.all(
                             color: Colors.transparent,

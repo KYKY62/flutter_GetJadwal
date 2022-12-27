@@ -137,9 +137,17 @@ class _HomeViewState extends State<HomeView> {
                             cAdd.course.text,
                             cAdd.selectedValue.toString(),
                           );
+                          print("DItekan");
                           Get.back();
                         },
-                        onChange: (value) {
+                        onChangeDropdown: (value) {
+                          if (cAdd.course.text == "") {
+                            if (cAdd.selectedValue.value == "") {
+                              cAdd.isEmpty(false);
+                            } else {
+                              cAdd.isEmpty(true);
+                            }
+                          }
                           cAdd.selectedValue.value = value;
                           print(value);
                         },
