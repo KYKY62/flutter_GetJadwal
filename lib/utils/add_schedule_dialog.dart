@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getjadwal/controller/detail_schedule_controller.dart';
 import 'package:get/get.dart';
 
 class AddScheduleDialog {
@@ -8,12 +7,10 @@ class AddScheduleDialog {
     required TextEditingController courseController,
     required String title,
     required bool isHomePage,
+    required String value,
     required VoidCallback onTap,
-    required onChange,
-    required String valueS,
+    onChange,
   }) async {
-    final cDetailSchedule = Get.put(DetailScheduleController());
-    final details = cDetailSchedule;
     await showDialog<void>(
       context: context,
       barrierDismissible: true,
@@ -75,7 +72,7 @@ class AddScheduleDialog {
                     contentPadding:
                         EdgeInsets.symmetric(horizontal: 15, vertical: 12),
                   ),
-                  onChanged: (value) {},
+                  onChanged: onChange,
                 ),
               ),
               const SizedBox(
@@ -111,7 +108,7 @@ class AddScheduleDialog {
                           contentPadding: EdgeInsets.symmetric(
                               horizontal: 15, vertical: 12),
                         ),
-                        value: valueS,
+                        // value: "tuesday",
                         items: const [
                           DropdownMenuItem(
                               value: "monday", child: Text("Senin")),

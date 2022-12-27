@@ -3,7 +3,6 @@ import 'package:flutter_getjadwal/controller/add_controller.dart';
 import 'package:flutter_getjadwal/controller/detail_schedule_controller.dart';
 import 'package:flutter_getjadwal/controller/login_controller.dart';
 import 'package:flutter_getjadwal/models/schedule.dart';
-import 'package:flutter_getjadwal/service/add_service.dart';
 import 'package:flutter_getjadwal/service/schedule_service.dart';
 import 'package:flutter_getjadwal/utils/add_schedule_dialog.dart';
 import 'package:flutter_getjadwal/utils/gridview_jadwal.dart';
@@ -132,15 +131,18 @@ class _HomeViewState extends State<HomeView> {
                         courseController: cAdd.course,
                         title: "Buat Jadwal Kuliah",
                         isHomePage: true,
-                        onTap: () {
-                          AddScheduleService().addSchedule(
-                              course: cAdd.course.text,
-                              day: cAdd.selectedValue.toString());
+                        value: cAdd.selectedValue.toString(),
+                        onTap: () async {
+                          await AddController().postAddSchedule(
+                            cAdd.course.text,
+                            cAdd.selectedValue.toString(),
+                          );
+                          Get.back();
                         },
                         onChange: (value) {
                           cAdd.selectedValue.value = value;
+                          print(value);
                         },
-                        valueS: cAdd.selectedValue.toString(),
                       );
                     },
                     child: Container(
@@ -203,6 +205,11 @@ class _HomeViewState extends State<HomeView> {
                             getData: details.getDataMonday(),
                             itemCount: details.listDetailSchedule.length,
                             day: "Senin",
+                            onTap: () {
+                              AddController()
+                                  .postAddSchedule(cAdd.course.text, "monday");
+                              Get.back();
+                            },
                           ),
                         )),
                   ),
@@ -221,6 +228,11 @@ class _HomeViewState extends State<HomeView> {
                             getData: details.getDataTuesday(),
                             itemCount: details.listDetailSchedule.length,
                             day: "Selasa",
+                            onTap: () {
+                              AddController()
+                                  .postAddSchedule(cAdd.course.text, "tuesday");
+                              Get.back();
+                            },
                           ),
                         )),
                   ),
@@ -239,6 +251,11 @@ class _HomeViewState extends State<HomeView> {
                             getData: details.getDataWednesday(),
                             itemCount: details.listDetailSchedule.length,
                             day: "Rabu",
+                            onTap: () {
+                              AddController().postAddSchedule(
+                                  cAdd.course.text, "wednesday");
+                              Get.back();
+                            },
                           ),
                         )),
                   ),
@@ -257,6 +274,11 @@ class _HomeViewState extends State<HomeView> {
                             getData: details.getDataThursday(),
                             itemCount: details.listDetailSchedule.length,
                             day: "Kamis",
+                            onTap: () {
+                              AddController().postAddSchedule(
+                                  cAdd.course.text, "thursday");
+                              Get.back();
+                            },
                           ),
                         )),
                   ),
@@ -276,6 +298,11 @@ class _HomeViewState extends State<HomeView> {
                           getData: details.getDataFriday(),
                           itemCount: details.listDetailSchedule.length,
                           day: "Jumat",
+                          onTap: () {
+                            AddController()
+                                .postAddSchedule(cAdd.course.text, "friday");
+                            Get.back();
+                          },
                         ),
                       ),
                     ),
