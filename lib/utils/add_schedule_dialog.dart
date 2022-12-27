@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getjadwal/controller/detail_schedule_controller.dart';
 import 'package:get/get.dart';
 
 class AddScheduleDialog {
   static void addSceduleDialog({
     context,
+    required TextEditingController courseController,
     required String title,
     required bool isHomePage,
+    required VoidCallback onTap,
+    required onChange,
+    required String valueS,
   }) async {
+    final cDetailSchedule = Get.put(DetailScheduleController());
+    final details = cDetailSchedule;
     await showDialog<void>(
       context: context,
       barrierDismissible: true,
@@ -58,6 +65,7 @@ class AddScheduleDialog {
                   borderRadius: BorderRadius.circular(6),
                 ),
                 child: TextFormField(
+                  controller: courseController,
                   decoration: const InputDecoration(
                     hintText: 'Masukkan Mata Kuliah',
                     hintStyle: TextStyle(
@@ -103,20 +111,20 @@ class AddScheduleDialog {
                           contentPadding: EdgeInsets.symmetric(
                               horizontal: 15, vertical: 12),
                         ),
+                        value: valueS,
                         items: const [
                           DropdownMenuItem(
-                            value: "Senin",
-                            child: Text("Senin"),
-                          ),
+                              value: "monday", child: Text("Senin")),
                           DropdownMenuItem(
-                              value: "Selasa", child: Text("Selasa")),
-                          DropdownMenuItem(value: "Rabu", child: Text("Rabu")),
+                              value: "tuesday", child: Text("Selasa")),
                           DropdownMenuItem(
-                              value: "Kamis", child: Text("Kamis")),
+                              value: "wednesday", child: Text("Rabu")),
                           DropdownMenuItem(
-                              value: "Jumat", child: Text("Jumat")),
+                              value: "thursday", child: Text("Kamis")),
+                          DropdownMenuItem(
+                              value: "friday", child: Text("Jumat")),
                         ],
-                        onChanged: (value) {},
+                        onChanged: onChange,
                       ),
                     )
                   : const SizedBox(),
@@ -124,7 +132,7 @@ class AddScheduleDialog {
           ),
           actions: [
             GestureDetector(
-              onTap: () {},
+              onTap: onTap,
               child: Container(
                 width: 122,
                 height: 48,

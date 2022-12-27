@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getjadwal/controller/add_controller.dart';
 import 'package:flutter_getjadwal/controller/detail_schedule_controller.dart';
 import 'package:flutter_getjadwal/controller/login_controller.dart';
 import 'package:flutter_getjadwal/models/schedule.dart';
+import 'package:flutter_getjadwal/service/add_service.dart';
 import 'package:flutter_getjadwal/service/schedule_service.dart';
 import 'package:flutter_getjadwal/utils/add_schedule_dialog.dart';
 import 'package:flutter_getjadwal/utils/gridview_jadwal.dart';
@@ -22,6 +24,7 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   final loginC = Get.put(LoginController());
   final cDetailSchedule = Get.put(DetailScheduleController());
+  final cAdd = Get.put(AddController());
 
   RefreshController refreshController = RefreshController();
   void _onRefresh() async {
@@ -126,8 +129,18 @@ class _HomeViewState extends State<HomeView> {
                     onTap: () {
                       AddScheduleDialog.addSceduleDialog(
                         context: context,
+                        courseController: cAdd.course,
                         title: "Buat Jadwal Kuliah",
                         isHomePage: true,
+                        onTap: () {
+                          AddScheduleService().addSchedule(
+                              course: cAdd.course.text,
+                              day: cAdd.selectedValue.toString());
+                        },
+                        onChange: (value) {
+                          cAdd.selectedValue.value = value;
+                        },
+                        valueS: cAdd.selectedValue.toString(),
                       );
                     },
                     child: Container(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getjadwal/controller/add_controller.dart';
 import 'package:flutter_getjadwal/controller/delete_controller.dart';
 import 'package:flutter_getjadwal/controller/detail_schedule_controller.dart';
-import 'package:flutter_getjadwal/utils/add_schedule_dialog.dart';
 import 'package:flutter_getjadwal/utils/delete_dialog.dart';
 import 'package:flutter_getjadwal/utils/snackbar.dart';
 import 'package:get/get.dart';
@@ -19,6 +19,7 @@ class DetailJadwal extends StatelessWidget {
   final String day;
 
   final cDetailSchedule = Get.put(DetailScheduleController());
+  final cAdd = Get.put(AddController());
 
   @override
   Widget build(BuildContext context) {
@@ -61,11 +62,13 @@ class DetailJadwal extends StatelessWidget {
               child: InkWell(
                 borderRadius: BorderRadius.circular(45),
                 onTap: () {
-                  AddScheduleDialog.addSceduleDialog(
-                    context: context,
-                    title: "Tambah Mata Kuliah",
-                    isHomePage: false,
-                  );
+                  // AddScheduleDialog.addSceduleDialog(
+                  //   context: context,
+                  //   courseController: cAdd.course,
+                  //   title: "Tambah Mata Kuliah",
+                  //   isHomePage: false,
+                  //   onTap: () {},
+                  // );
                 },
                 child: Container(
                   decoration: BoxDecoration(
