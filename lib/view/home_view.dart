@@ -3,6 +3,7 @@ import 'package:flutter_getjadwal/controller/detail_schedule_controller.dart';
 import 'package:flutter_getjadwal/controller/login_controller.dart';
 import 'package:flutter_getjadwal/models/schedule.dart';
 import 'package:flutter_getjadwal/service/schedule_service.dart';
+import 'package:flutter_getjadwal/utils/add_schedule_dialog.dart';
 import 'package:flutter_getjadwal/utils/gridview_jadwal.dart';
 import 'package:flutter_getjadwal/utils/logout_dialog.dart';
 import 'package:flutter_getjadwal/view/detail_jadwal.dart';
@@ -117,34 +118,47 @@ class _HomeViewState extends State<HomeView> {
               padding: const EdgeInsets.all(10),
               child: Align(
                 alignment: Alignment.topRight,
-                child: Container(
-                  width: 200,
-                  height: 54,
-                  decoration: BoxDecoration(
-                    color: const Color(0xffD9019C),
+                child: Material(
+                  color: const Color(0xffD9019C),
+                  borderRadius: BorderRadius.circular(45),
+                  child: InkWell(
                     borderRadius: BorderRadius.circular(45),
-                  ),
-                  child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 15,
-                        horizontal: 24,
+                    onTap: () {
+                      AddScheduleDialog.addSceduleDialog(
+                        context: context,
+                        title: "Buat Jadwal Kuliah",
+                        isHomePage: true,
+                      );
+                    },
+                    child: Container(
+                      width: 200,
+                      height: 54,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(45),
                       ),
-                      child: Row(
-                        children: const [
-                          Icon(
-                            Icons.add,
-                            color: Colors.white,
-                            size: 24.0,
+                      child: Center(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 15,
+                            horizontal: 24,
                           ),
-                          Text(
-                            "Buat Jadwal Kuliah",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          )
-                        ],
+                          child: Row(
+                            children: const [
+                              Icon(
+                                Icons.add,
+                                color: Colors.white,
+                                size: 24.0,
+                              ),
+                              Text(
+                                "Buat Jadwal Kuliah",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
                       ),
                     ),
                   ),
