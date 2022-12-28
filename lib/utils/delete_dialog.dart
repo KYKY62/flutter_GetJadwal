@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 
 import 'package:flutter/material.dart';
 
-class DeleteDialog {
+class WidgetDialog {
   static void deleteDialog({
     context,
     required VoidCallback onTapDelete,
