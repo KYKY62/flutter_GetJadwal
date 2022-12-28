@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 
 class LogOutDialog {
   static void logOutDialog(context) async {
-    bool confirm = false;
     await showDialog<void>(
       context: context,
       barrierDismissible: true,
@@ -35,7 +34,6 @@ class LogOutDialog {
                 backgroundColor: Colors.red,
               ),
               onPressed: () async {
-                confirm = true;
                 await Session.deleteUser();
                 await Get.offAllNamed(RouteName.login);
               },
@@ -45,9 +43,5 @@ class LogOutDialog {
         );
       },
     );
-
-    if (confirm) {
-      print("Confirmed!");
-    }
   }
 }

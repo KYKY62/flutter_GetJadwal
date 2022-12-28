@@ -32,7 +32,7 @@ class LoginController extends GetxController {
         isErrorEmail.value = true;
       }
     } catch (e) {
-      print(e);
+      return;
     }
   }
 

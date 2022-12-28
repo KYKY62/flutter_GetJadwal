@@ -23,7 +23,6 @@ class AddScheduleService {
       headers: headers,
     );
     Map responseData = jsonDecode(response.body);
-    print(responseData);
     return responseData;
   }
 }

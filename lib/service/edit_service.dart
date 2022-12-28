@@ -22,7 +22,6 @@ class EditService {
     );
 
     Map obj = jsonDecode(response.body);
-    print(obj);
     return obj;
   }
 }

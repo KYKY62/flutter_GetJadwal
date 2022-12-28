@@ -137,7 +137,6 @@ class _HomeViewState extends State<HomeView> {
                             cAdd.course.text,
                             cAdd.selectedValue.toString(),
                           );
-                          print("DItekan");
                           Get.back();
                         },
                         onChangeDropdown: (value) {
@@ -149,7 +148,6 @@ class _HomeViewState extends State<HomeView> {
                             }
                           }
                           cAdd.selectedValue.value = value;
-                          print(value);
                         },
                       );
                     },

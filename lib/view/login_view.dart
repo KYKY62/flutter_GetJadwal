@@ -124,7 +124,6 @@ class LoginView extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   loginC.loginWithEmail(loginC.emailC.text);
-                  print("ditekan");
                 },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
