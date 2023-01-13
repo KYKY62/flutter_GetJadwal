@@ -1,16 +1,40 @@
-# flutter_getjadwal
+# GetJadwal
 
-A new Flutter project.
+This application is used to record your daily schedule
 
-## Getting Started
+[![GitHub watchers](https://badgen.net/github/watchers/KYKY62/)](https://github.com/KYKY62/uas_pbwd/watchers/) [![made-with-Flutter](https://img.shields.io/badge/Made%20with-Flutter-1f425f.svg)](https://flutter.dev/)
 
-This project is a starting point for a Flutter application.
+## Preview
 
-A few resources to get you started if this is your first Flutter project:
+![Poster GetJadwal](https://user-images.githubusercontent.com/77371920/212296702-cee5aa8e-a987-418d-bd27-9793462cdaa8.png)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Features RAS GAS
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Login
+- Logout
+- Create Jadwal
+- Read Jadwal
+- Update Jadwal
+- Delete Jadwal
+
+## Pubspec
+
+Used Package :
+
+- [GetX] - For state management.
+- [http] - Make it easy to consume HTTP resources.
+- [pull_to_refresh] - A widget provided to the flutter scroll component drop-down refresh and pull up load.
+- [shared_preferences] - Data may be persisted to disk asynchronously.
+- [flutter_launcher_icons] - A command-line tool which simplifies the task of updating your Flutter app's launcher icon.
+
+## Demo the Application
+
+Download the Application Here.
+
+```
+https://www.mediafire.com/file/9y9ips45lyboe9k/GetJadwal.apk/file
+```
+
+## Credit
+
+> Rizky Akbar Siregar | 2022 |
