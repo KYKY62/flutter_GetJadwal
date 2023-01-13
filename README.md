@@ -2,7 +2,7 @@
 
 This application is used to record your daily schedule
 
-[![GitHub watchers](https://badgen.net/github/watchers/KYKY62/)](https://github.com/KYKY62/uas_pbwd/watchers/) [![made-with-Flutter](https://img.shields.io/badge/Made%20with-Flutter-1f425f.svg)](https://flutter.dev/)
+[![GitHub watchers](https://badgen.net/github/watchers/KYKY62/)](https://github.com/KYKY62/flutter_GetJadwal/watchers/) [![made-with-Flutter](https://img.shields.io/badge/Made%20with-Flutter-1f425f.svg)](https://flutter.dev/)
 
 ## Preview
 
